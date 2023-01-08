@@ -1,0 +1,8 @@
+[28-Jan-2022 18:57:46 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/hw2g0hqw0zmx/public_html/config/app.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/hw2g0hqw0zmx/public_html/config/app.php on line 16
+[28-Jan-2022 18:57:49 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/hw2g0hqw0zmx/public_html/config/app.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/hw2g0hqw0zmx/public_html/config/app.php on line 16
