@@ -8,7 +8,9 @@ use App\Company;
 use App\Service;
 use App\Slider;
 use App\Customer;
+use App\Faq;
 use App\QuoteLog;
+use App\Testimonial;
 use Hash;
 use DB;
 use Auth;
@@ -17,27 +19,34 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view("front.index");
+        $company=Company::first();
+        return view("front.index",compact("company"));
     }
 
     public function about()
     {
-        return view("front.about");
+        $company=Company::first();
+        $testimonials=Testimonial::get();
+        return view("front.about",compact("testimonials","company"));
     }
     
     public function faq()
     {
-        return view("front.faq");
+        $company=Company::first();
+        $faq=Faq::get();
+        return view("front.faq",compact("faq","company"));
     }
 
     public function contact()
     {
-        return view("front.contact");
+        $company=Company::first();
+        return view("front.contact",compact("company"));
     }
 
     public function whyus()
     {
-        return view("front.whyus");
+        $company=Company::first();
+        return view("front.whyus",compact("company"));
     }
 
     public function service()

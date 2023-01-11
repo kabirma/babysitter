@@ -50,6 +50,7 @@ class CompanyController extends Controller
             $company->email=$request->email;
             $company->phone=$request->phone;
             $company->location=$request->address;
+            $company->map_link=$request->map_link;
             $company->facebook=$request->facebook;
             $company->linkedin=$request->linkedin;
             $company->instagram=$request->instagram;
@@ -81,9 +82,23 @@ class CompanyController extends Controller
         }
         if(isset($request->about_title)){
             $company->about_title=$request->about_title;
+            $company->about_subtitle=$request->about_subtitle;
             $company->about=$request->about;
             $company->vision=$request->vision;
             $company->mission=$request->mission;
+
+            $company->about_box_1=$request->about_box_1;
+            $company->about_box_1_no=$request->about_box_1_no;
+
+            $company->about_box_2=$request->about_box_2;
+            $company->about_box_2_no=$request->about_box_2_no;
+
+            $company->about_box_3=$request->about_box_3;
+            $company->about_box_3_no=$request->about_box_3_no;
+
+            $company->about_box_4=$request->about_box_4;
+            $company->about_box_4_no=$request->about_box_4_no;
+
             
         
             if($request->hasFile('about_image')){
@@ -98,6 +113,7 @@ class CompanyController extends Controller
 
         if(isset($request->main_content)){
             $company->main_content=$request->main_content;
+            $company->main_content_subtitle=$request->main_content_subtitle;
 
         
             if($request->hasFile('main_image')){
@@ -112,6 +128,7 @@ class CompanyController extends Controller
 
         if(isset($request->why_us)){
             $company->why_us=$request->why_us;
+            $company->why_us_subtitle=$request->why_us_subtitle;
             $company->why_us_content=$request->why_us_content;
 
         

@@ -1,19 +1,15 @@
 @extends('front.layout.app')
 
 @section('content')
-    @php
-        $company = App\Company::first();
-    @endphp
-
 
     <!--=================================
         banner -->
-    <section class="bg-light space-ptb bg-holder" style="background-image: url({{asset('front/images/bg/07.jpg')}});">
+    <section class="bg-light space-ptb bg-holder" style="background-image: url({{asset($company->main_image)}});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-9">
-                    <h1>Finding baby sitter or senior care sitter, made easy.</h1>
-                    <p class="lead fw-normal">Find the perfect sitter. Book Now.</p>
+                    <h1>{{$company->main_content}}</h1>
+                    <p class="lead fw-normal">{{$company->main_content_subtitle}}</p>
                     <form class="row g-2 mt-4 align-items-center">
                         <div class="mb-3 mt-0 select-border col-md-5">
                             <label class="form-label">Choose your care</label>

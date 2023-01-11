@@ -60,30 +60,30 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="contact-us.html">Home</a>
+                            <a class="nav-link dropdown-toggle" href="{{route('index')}}">Home</a>
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="contact-us.html">Offers</a>
+                            <a class="nav-link dropdown-toggle" href="{{route('index')}}">Offers</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="contact-us.html">About Us</a>
+                            <a class="nav-link dropdown-toggle" href="{{route('about')}}">About Us</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="contact-us.html">Why Choose Us</a>
+                            <a class="nav-link dropdown-toggle" href="{{route('whyus')}}">Why Choose Us</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="contact-us.html">FAQ's</a>
+                            <a class="nav-link dropdown-toggle" href="{{route('faq')}}">FAQ's</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="contact-us.html">Contact Us</a>
+                            <a class="nav-link dropdown-toggle" href="{{route('contact')}}">Contact Us</a>
                         </li>
                     </ul>
                 </div>
                 <div class="add-listing">
                     <a class="phone align-middle" href="tel:7042791249"><i
                             class="fa fa-phone me-2 fa fa-flip-horizontal"></i>{{ $company->phone }}</a>
-                    <a class="login d-inline-block align-middle" href="login.html"><i
+                    <a class="login d-inline-block align-middle" href="#login"><i
                             class="far fa-user-circle px-md-4 pe-2"></i></a>
                     {{-- <a class="btn btn-primary btn-sm" href="book-a-sitter.html">Book Sitter</a> --}}
                 </div>
@@ -119,9 +119,9 @@
                     <div class="footer-link">
                         <h5 class="text-primary">Need help?</h5>
                         <ul class="list-unstyled mb-0">
-                            <li><a href="faqs.html">FAQs</a></li>
-                            <li><a href="about-us.html">About Us </a></li>
-                            <li><a href="contact-us.html">Contact Us</a></li>
+                            <li><a href="{{route("faq")}}">FAQs</a></li>
+                            <li><a href="{{route("about")}}">About Us </a></li>
+                            <li><a href="{{route('index')}}">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -129,8 +129,8 @@
                     <div class="footer-link">
                         <h5 class="text-primary">Services</h5>
                         <ul class="list-unstyled mb-0">
-                            <li><a href="service-detail.html">Baby Sitters</a></li>
-                            <li><a href="service-detail.html">Old Age Carer</a></li>
+                            <li><a href="#0">Baby Sitters</a></li>
+                            <li><a href="#0">Old Age Carer</a></li>
                         </ul>
                     </div>
                 </div>
@@ -163,7 +163,7 @@
                                 <script>
                                     document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
                                 </script>
-                            </span> <a href="{{ route('index') }}"> Sitters </a> All Rights Reserved</p>
+                            </span> <a href="{{ route('index') }}"> {{$company->name}} </a> All Rights Reserved</p>
                     </div>
                 </div>
             </div>

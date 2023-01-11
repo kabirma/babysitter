@@ -270,7 +270,7 @@
 
                             </ul>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i
                                     class="fa fa-image"></i><span class="sidebar-mini-hide">Main Slider</span></a>
                             <ul>
@@ -282,7 +282,7 @@
                                 </li>
 
                             </ul>
-                        </li>
+                        </li> --}}
 
 
 
@@ -306,9 +306,9 @@
                                 <a class="" href="{{ route('why_us') }}"><i class="fa fa-gear"></i><span
                                         class="sidebar-mini-hide">Why Choose Us</span></a>
                             </li>
-                            {{-- <li>
+                            <li>
                                 <a class="" href="{{route('bannerview')}}"><i class="fa fa-gear"></i><span class="sidebar-mini-hide">Top Banner</span></a>
-                            </li> --}}
+                            </li>
                             <li>
                                 <a class="" href="{{ route('aboutview') }}"><i class="fa fa-gear"></i><span
                                         class="sidebar-mini-hide">About</span></a>

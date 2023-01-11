@@ -40,7 +40,6 @@
                 <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
                 
                 <form method="post" @if(isset($testimonials)) action="{{route('testimonialupdate')}}" @else action="{{route('testimonialcreate')}}"  @endif enctype="multipart/form-data">
-                
                     @csrf
                     @if(isset($testimonials))
                     <input type="hidden" name="id" value="{{$testimonials->id}}">
@@ -55,16 +54,14 @@
                     </div>
                
                     <div class="form-group">
-                        <label for="example-nf-email">{{$title}} Rating</label>
-                        <input type="number" min="0" class="form-control" required @if(isset($testimonials)) value="{{$testimonials->rating}}" @endif name="rating" placeholder="Enter Rating..">
+                        <label for="example-nf-email">{{$title}} Designation</label>
+                        <input type="text" class="form-control" required @if(isset($testimonials)) value="{{$testimonials->designation}}" @endif name="designation" placeholder="Enter Designation..">
                     </div>
                     <div class="form-group">
                         <label for="example-nf-email">{{$title}} Review</label>
-                        <textarea name="review" class="form-control" id="ckeditor" placeholder="Enter Review.." required cols="30" rows="10">@if(isset($testimonials)){{$testimonials->review}}@endif</textarea>
+                        <textarea name="review" class="form-control" placeholder="Enter Review.." required cols="30" rows="10">@if(isset($testimonials)){{$testimonials->review}}@endif</textarea>
                         
                     </div>
-               
-
                    
                     <div class="form-group text-right">
                         <button type="submit" class="btn btn-alt-primary"> @if(isset($testimonials)) Update @else Create @endif</button>

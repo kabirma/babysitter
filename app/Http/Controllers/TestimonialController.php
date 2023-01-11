@@ -12,21 +12,21 @@ class TestimonialController extends Controller
 {
     public function index()
     {
-       $title="Supplier Reviews";
+       $title="Testimonials";
        $testimonials=Testimonial::get();
        return view("testimonial.index",compact("testimonials","title"));
     }
 
     public function add()
     {
-        $title="Customer Reviews";
+        $title="Testimonials";
       
         return view("testimonial.add",compact("title"));
     }
 
     public function edit($id)
     {
-        $title="Customer Reviews";
+        $title="Testimonials";
      
         $testimonials=Testimonial::find($id);
         
@@ -38,7 +38,7 @@ class TestimonialController extends Controller
         $testimonial=new Testimonial;
         $testimonial->name=$request->name;
         $testimonial->email=$request->email;
-        $testimonial->rating=$request->rating;
+        $testimonial->designation=$request->designation;
         $testimonial->review=$request->review;
         
         if($testimonial->save()){
@@ -53,7 +53,7 @@ class TestimonialController extends Controller
         $testimonial=Testimonial::find($request->id);
        $testimonial->name=$request->name;
         $testimonial->email=$request->email;
-        $testimonial->rating=$request->rating;
+        $testimonial->designation=$request->designation;
         $testimonial->review=$request->review;
         
         if($testimonial->save()){

@@ -59,6 +59,10 @@
                         <input type="text" class="form-control" required @if(isset($companies)) value="{{$companies->location}}" @endif name="address" placeholder="Enter Address..">
                     </div>
                     <div class="form-group">
+                        <label for="example-nf-email">{{$title}} Map Iframe Link</label>
+                        <input type="text" class="form-control" required @if(isset($companies)) value="{{$companies->map_link}}" @endif name="map_link" placeholder="Enter Map Iframe Link..">
+                    </div>
+                    <div class="form-group">
                         <label for="example-nf-email">Map Radius (In KM)</label>
                         <input type="number" class="form-control" required @if(isset($companies)) value="{{$companies->map_radius}}" @endif name="map_radius" placeholder="Enter Frieght..">
                     </div>
@@ -121,6 +125,10 @@
                             <input type="text" class="form-control" required  @if(isset($companies)) value="{{$companies->about_title}}" @endif name="about_title" placeholder="Enter Heading..">
                         </div>
                         <div class="form-group">
+                            <label for="example-nf-email">{{$title}} Sub Heading</label>
+                            <input type="text" class="form-control" required  @if(isset($companies)) value="{{$companies->about_subtitle}}" @endif name="about_subtitle" placeholder="Enter Sub Heading..">
+                        </div>
+                        <div class="form-group">
                             <label for="example-nf-email">{{$title}} Content</label>
                             <textarea name="about"  required cols="30" rows="10" class="form-control">{{$companies->about}}</textarea>
                         </div>
@@ -132,6 +140,55 @@
                             </div>
                             <div style="padding:2%" class="text-center">
                                 <img src="{{asset($companies->about_image)}}" alt="about_image" style="height:200px;width:auto">   
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="form-group col-md-6">
+                                <label for="example-nf-email">{{$title}} Box 1</label>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <input type="text" name="about_box_1" value="{{$companies->about_box_1}}" placeholder="Text" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" name="about_box_1_no" value="{{$companies->about_box_1_no}}" placeholder="Number" class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="example-nf-email">{{$title}} Box 2</label>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <input type="text" name="about_box_2" value="{{$companies->about_box_2}}" placeholder="Text" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" name="about_box_2_no" value="{{$companies->about_box_2_no}}" placeholder="Number" class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="example-nf-email">{{$title}} Box 3</label>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <input type="text" name="about_box_3" value="{{$companies->about_box_3}}" placeholder="Text" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" name="about_box_3_no" value="{{$companies->about_box_3_no}}" placeholder="Number" class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="example-nf-email">{{$title}} Box 4</label>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <input type="text" name="about_box_4" value="{{$companies->about_box_4}}" placeholder="Text" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" name="about_box_4_no" value="{{$companies->about_box_4_no}}" placeholder="Number" class="form-control" required>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -147,6 +204,10 @@
                         <div class="form-group">
                             <label for="example-nf-email">{{$title}} Heading</label>
                             <input type="text" class="form-control" required  @if(isset($companies)) value="{{$companies->main_content}}" @endif name="main_content" placeholder="Enter Heading..">
+                        </div>
+                        <div class="form-group">
+                            <label for="example-nf-email">{{$title}} Sub Heading</label>
+                            <input type="text" class="form-control" required  @if(isset($companies)) value="{{$companies->main_content_subtitle}}" @endif name="main_content_subtitle" placeholder="Enter Sub Heading..">
                         </div>
                        
                         <div class="form-group">
@@ -166,8 +227,12 @@
                             <input type="text" class="form-control" required  @if(isset($companies)) value="{{$companies->why_us}}" @endif name="why_us" placeholder="Enter Heading..">
                         </div>
                         <div class="form-group">
+                            <label for="example-nf-email">{{$title}} Sub Heading</label>
+                            <input type="text" class="form-control" required  @if(isset($companies)) value="{{$companies->why_us_subtitle}}" @endif name="why_us_subtitle" placeholder="Enter Sub Heading..">
+                        </div>
+                        <div class="form-group">
                             <label for="example-nf-email">{{$title}} Content</label>
-                            <textarea name="why_us_content"  required cols="30" rows="10" class="form-control ckeditor">{{$companies->why_us_content}}</textarea>
+                            <textarea name="why_us_content"  required cols="30" rows="10" class="form-control">{{$companies->why_us_content}}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="example-nf-email">{{$title}} Image</label>
