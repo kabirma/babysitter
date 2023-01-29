@@ -41,9 +41,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>BIO</th>
-                                @if ($type == 1)
-                                    <th>Service</th>
-                                @endif
+                                <th>Service</th>
                                 <th>Phone</th>
                                 <th>Address</th>
                                 <th>Status</th>
@@ -57,9 +55,7 @@
                                     <td>{{ $row->first_name }} {{ $row->last_name }}</td>
                                     <td>{{ $row->email }}</td>
                                     <td>{{ $row->bio }}</td>
-                                    @if ($type == 1)
-                                        <td>{{ $row->service=="baby_sitter" ? "Baby Sitter" : "Carer" }}</td>
-                                    @endif
+                                    <td>{{ $row->service == 1 ? 'Baby Sitter' : 'Carer' }}</td>
                                     <td>{{ $row->phone }}</td>
                                     <td>{{ $row->address }}</td>
                                     <td>

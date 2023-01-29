@@ -18,22 +18,26 @@ Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/contact', 'HomeController@contact')->name('contact');
 Route::get('/whyus', 'HomeController@whyus')->name('whyus');
 
-Route::get('/faq', 'HomeController@faq')->name('faq');
+Route::get('/services', 'HomeController@services')->name('services');
+Route::post('/search', 'HomeController@search')->name('search');
 
+Route::get('/faq', 'HomeController@faq')->name('faq');
 
 Route::post('/contact/submit', 'HomeController@contactsubmit')->name('contactsubmit');
 
-Route::get('/customerlogin', 'HomeController@login')->name('customerlogin');
-Route::get('/customerlogout', 'HomeController@customerlogout')->name('customerlogout');
+Route::get('/customer/login', 'HomeController@login')->name('customerlogin');
+Route::get('/customer/logout', 'HomeController@customerlogout')->name('customerlogout');
 
-Route::post('/loginsubmit', 'HomeController@loginsubmit')->name('loginsubmit');
-Route::post('/registersubmit', 'HomeController@registersubmit')->name('registersubmit');
+Route::post('/login/submit', 'HomeController@loginsubmit')->name('loginsubmit');
+Route::post('/register/submit', 'HomeController@registersubmit')->name('registersubmit');
 
 Route::group(['middleware' => ['customer'], 'prefix' => 'customer'], function () {
     Route::get('/profile', 'HomeController@profile')->name('customer_profile');
+    Route::get('/schedule', 'HomeController@schedule')->name('customer_schedule');
     Route::get('/dashboard', 'HomeController@dashboard')->name('customer_dashboard');
 
     Route::post('/profile/submit', 'HomeController@profile_submit')->name('profile_submit');
+    Route::post('/schedule/submit', 'HomeController@schedule_submit')->name('schedule_submit');
 });
 
 // Admin Panel

@@ -5,7 +5,7 @@
 @php
     $company=App\Company::first();
 @endphp
-            <div class="col-sm-8 blog-base">
+            {{-- <div class="col-sm-8 blog-base">
                 <div class="col-sm-12 no-padding">
                     <table class="table table-bordered table-striped table-vcenter js-dataTable-full table-responsive">
                         <thead style="background: #E74545;color:white">
@@ -61,7 +61,7 @@
                     </table>
                 </div>
                
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>

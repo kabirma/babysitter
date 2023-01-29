@@ -10,21 +10,27 @@
                 <div class="col-lg-6 col-md-9">
                     <h1>{{$company->main_content}}</h1>
                     <p class="lead fw-normal">{{$company->main_content_subtitle}}</p>
-                    <form class="row g-2 mt-4 align-items-center">
+                    <form class="row g-2 mt-4 align-items-center" method="POST" action="{{route('search')}}">
+                        @csrf
                         <div class="mb-3 mt-0 select-border col-md-5">
                             <label class="form-label">Choose your care</label>
-                            <select class="form-control basic-select">
+                            <select class="form-control" name="service">
                                 <option value="1" selected="selected">Babysitter or Nanny</option>
                                 <option value="2">Senior Care Sitter</option>
                             </select>
                         </div>
                         <div class="col-md-7 mb-3 mt-0">
                             <label class="form-label">City or postal code</label>
-                            <input type="text" class="form-control" value="SW1W 0NY">
+                            <input type="text" name="address" required class="form-control" id="search_input">
+                            <input type="hidden" name="latitude" id="latitude">
+                            <input type="hidden" name="longitude" id="longitude">
                         </div>
                         <div class="mb-3 mt-0 col-sm-12 mb-0">
-                            <button type="submit" class="btn btn-dark">Search</button>
+                            <button type="submit" class="btn btn-dark">I Find my next caregiver!</button>
                         </div>
+                        <a href="{{route('customerlogin')}}" id="care_giver">
+                            I'm a care giver
+                        </a>
                     </form>
                 </div>
             </div>

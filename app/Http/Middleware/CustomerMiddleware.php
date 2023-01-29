@@ -21,7 +21,7 @@ class CustomerMiddleware
         }
         else
         {
-            return redirect()->route('login');
+            return redirect()->route('customerlogin');
         }
 
 

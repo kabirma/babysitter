@@ -1,111 +1,160 @@
 @extends('front.layout.app')
 
 @section('content')
-@php
-    $company=App\Company::first();
-@endphp
-
-
-
-<section id="breadcrumb" class="space">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 breadcrumb-block">
-                <h2>Login/Register</h2>
-            </div>
-            <div class="col-sm-6 breadcrumb-block text-right">
-                <ol class="breadcrumb">
-                    <li><span>You are here:</span><a href="{{route('index')}}">Home</a></li>
-                    <li class="active">Login/Register</li>
-                </ol>
+    <!--=================================
+                banner -->
+    <section class="header-inner bg-dark text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 ">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
+                        <li class="breadcrumb-item active">Login/Register</li>
+                    </ol>
+                    <h2 class="inner-banner-title">Login/Register</h2>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-<section id="about" class="space bg-color">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="note form-success" id="resetSuccess" style="display:none;">
-                  We've sent you an email with a link to update your password.
-                </div>
-               
-                <form method="post" action="{{route('loginsubmit')}}" id="customer_login">
-                  <h3 class="newCustomer">ALREADY REGISTERED?</h3>
-                  @csrf
-                
-                  @if(Session::has('loginsuccess'))
-                  <div class="alert alert-success text-center">
-                      <i class="fa fa-check"></i> {{ Session::get('loginsuccess') }}
-                  </div>
-                  @endif
-          
-                  @if(Session::has('loginerror'))
-                  <div class="alert alert-danger text-center">
-                      <i class="fa fa-times"></i> {{ Session::get('loginerror') }}
-                  </div>
-                  @endif
-      
-                  <label for="customer_email"><span>Email Address</span><em>*</em></label>
-                  <input type="email" value=""  class="form-control" name="email" id="customer_email">
-      
-      
-                  <label for="customer_password"><span>Password</span><em>*</em></label>
-                  <input type="password" value="" class="form-control" name="password" id="customer_password">
-      
-      
-                  <div class="action-btn">
-                      <br>
-                    <p><input type="submit" class="btn btn-primary" value="Login"></p>
-                   
-                  </div>
-                </form>
-              
-              </div>
-              <div class="col-sm-6">
-                <div class="login-form-box">
-                  <h3 class="newCustomer">NEW CUSTOMER</h3>
-                  @if(Session::has('success'))
-                  <div class="alert alert-success text-center">
-                      <i class="fa fa-check"></i> {{ Session::get('success') }}
-                  </div>
-                  @endif
-          
-                  @if(Session::has('error'))
-                  <div class="alert alert-danger text-center">
-                      <i class="fa fa-times"></i> {{ Session::get('error') }}
-                  </div>
-                  @endif
-                  <form method="post" action="{{route('registersubmit')}}" id="customer_login">
-                      @csrf
-                      <label for="customer_password"><span>Name</span><em>*</em></label>
-                      <input type="text" value="" class="form-control" required name="first_name" id="customer_password">
-      
-                      <label for="customer_email"><span>Email Address</span><em>*</em></label>
-                      <input type="email" value="" class="form-control" required name="email" id="customer_email">
-          
-                      <label for="customer_password"><span>Password</span><em>*</em></label>
-                      <input type="password" value="" class="form-control" required name="password" id="customer_password">
-          
-                      <label for="customer_password"><span>Phone</span><em>*</em></label>
-                      <input type="number" value="" class="form-control" required name="phone" id="customer_password">
-                      
-                      <label for="customer_password"><span>Address</span><em>*</em></label>
-                      <input type="text" value="" class="form-control" required name="address" id="customer_password">
-      
-      
-                      <div class="form-group">
-                         <br>
-                        <p><input type="submit" class="btn btn-primary" value="Register"></p>
-                       
-                      </div>
-                    </form>
-                </div>
-                
-              </div>
-      
-        </div>
-    </div>
-</section>
+    </section>
+    <!--=================================
+                    banner -->
 
+    <!--=================================
+                    Login -->
+    <section class="space-ptb login">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-sm-10">
+                    @if (Session::has('success'))
+                        <div class="alert alert-success text-center">
+                            <i class="fa fa-check"></i> {{ Session::get('success') }}
+                        </div>
+                    @endif
+
+                    @if (Session::has('error'))
+                        <div class="alert alert-danger text-center">
+                            <i class="fa fa-times"></i> {{ Session::get('error') }}
+                        </div>
+                    @endif
+                    @if (Session::has('loginsuccess'))
+                        <div class="alert alert-success text-center">
+                            <i class="fa fa-check"></i> {{ Session::get('loginsuccess') }}
+                        </div>
+                    @endif
+
+                    @if (Session::has('loginerror'))
+                        <div class="alert alert-danger text-center">
+                            <i class="fa fa-times"></i> {{ Session::get('loginerror') }}
+                        </div>
+                    @endif
+                    <ul class="nav nav-tabs nav-tabs-02 justify-content-center" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="login-tab" data-bs-toggle="tab" href="#login" role="tab"
+                                aria-controls="login" aria-selected="false">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="register-tab" data-bs-toggle="tab" href="#register" role="tab"
+                                aria-controls="register" aria-selected="true">Register</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                            <form class="row mt-4 align-items-center" method="post" action="{{ route('loginsubmit') }}">
+                                @csrf
+
+
+                                <div class="mb-3 col-sm-12">
+                                    <label class="form-label">Email:</label>
+                                    <input type="text" class="form-control" required name="email" placeholder="">
+                                </div>
+                                <div class="mb-3 col-sm-12">
+                                    <label class="form-label">Password:</label>
+                                    <input type="Password" class="form-control" required name="password" placeholder="">
+                                </div>
+                                <div class="col-sm-4 offset-sm-4">
+                                    <div class="d-grid">
+                                        <button type="submit" class="btn btn-primary">Sign in</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                            <form class="row mt-4 mb-5 align-items-center" method="post"
+                                action="{{ route('registersubmit') }}"
+                                oninput='confirm_password.setCustomValidity(confirm_password.value != password.value ? "Passwords do not match." : "")'>
+                                @csrf
+
+                                <div class="mb-3 col-sm-12 select-border">
+                                    <label class="form-label">Service Offered:</label>
+                                    <select name="service" class="form-control basic-select">
+                                        <option value="1">Babysitting</option>
+                                        <option value="2">Caring for Old
+                                            People</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3 col-sm-6">
+                                    <label class="form-label">First Name:</label>
+                                    <input type="text" required class="form-control" name="first_name" placeholder="">
+                                </div>
+                                <div class="mb-3 col-sm-6">
+                                    <label class="form-label">Last Name:</label>
+                                    <input type="text" required class="form-control" name="last_name" placeholder="">
+                                </div>
+                                <div class="mb-3 col-sm-12">
+                                    <label class="form-label">Email Address:</label>
+                                    <input type="email" required class="form-control" name="email" placeholder="">
+                                </div>
+                                <div class="mb-3 col-sm-12">
+                                    <label class="form-label">Phone:</label>
+                                    <input type="tel" required class="form-control" name="phone" placeholder="">
+                                </div>
+                                <div class="mb-3 col-sm-6">
+                                    <label class="form-label">Password:</label>
+                                    <input type="Password" required class="form-control" name="password" placeholder="">
+                                </div>
+                                <div class="mb-3 col-sm-6">
+                                    <label class="form-label">Confirm Password:</label>
+                                    <input type="Password" required class="form-control" name="confirm_password"
+                                        placeholder="">
+                                </div>
+                                <div class="mb-3 col-sm-12">
+                                    <label class="form-label">Bio:</label>
+                                    <input type="text" required class="form-control" name="bio" placeholder="">
+                                </div>
+                                <div class="mb-3 col-sm-12">
+                                    <label class="form-label">Address</label>
+                                    <input type="text" id="search_input" required class="form-control" name="address"
+                                        placeholder="">
+                                    <input type="hidden" id="latitude" name="latitude">
+                                    <input type="hidden" id="longitude" name="longitude">
+                                </div>
+                                <div class="mb-3 col-sm-12">
+                                    <label class="form-label">Account Type:</label>
+                                    <br>
+                                    <label for="offerer">
+                                        <input type="radio" required name="type" value="1" id="offerer">
+                                        Offerer
+                                    </label>
+
+                                    <label for="Supplier">
+                                        <input type="radio" required name="type" value="2" id="Supplier">
+                                        Supplier
+                                    </label>
+                                </div>
+                                <div class="col-sm-4 offset-sm-4">
+                                    <div class="d-grid">
+                                        <button type="submit" class="btn btn-primary">Sign up</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=================================
+                    Login -->
 @endsection

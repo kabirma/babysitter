@@ -60,32 +60,40 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{route('index')}}">Home</a>
+                            <a class="nav-link dropdown-toggle" href="{{ route('index') }}">Home</a>
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{route('index')}}">Offers</a>
+                            <a class="nav-link dropdown-toggle" href="{{ route('services') }}">Offers</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{route('about')}}">About Us</a>
+                            <a class="nav-link dropdown-toggle" href="{{ route('about') }}">About Us</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{route('whyus')}}">Why Choose Us</a>
+                            <a class="nav-link dropdown-toggle" href="{{ route('whyus') }}">Why Choose Us</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{route('faq')}}">FAQ's</a>
+                            <a class="nav-link dropdown-toggle" href="{{ route('faq') }}">FAQ's</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{route('contact')}}">Contact Us</a>
+                            <a class="nav-link dropdown-toggle" href="{{ route('contact') }}">Contact Us</a>
                         </li>
                     </ul>
                 </div>
                 <div class="add-listing">
-                    <a class="phone align-middle" href="tel:7042791249"><i
-                            class="fa fa-phone me-2 fa fa-flip-horizontal"></i>{{ $company->phone }}</a>
-                    <a class="login d-inline-block align-middle" href="#login"><i
-                            class="far fa-user-circle px-md-4 pe-2"></i></a>
-                    {{-- <a class="btn btn-primary btn-sm" href="book-a-sitter.html">Book Sitter</a> --}}
+
+
+                    @if (Auth::guard('customer')->check())
+                        <a class="btn btn-primary btn-sm" href="{{ route('customer_dashboard') }}"><i
+                                class="far fa-user-circle"></i>
+                            {{ Auth::guard('customer')->user()->type == 1 ? 'Offerer' : 'Supplier' }} Dashboard</a>
+                    @else
+                        <a class="phone align-middle" href="tel:7042791249"><i
+                                class="fa fa-phone me-2 fa fa-flip-horizontal"></i>{{ $company->phone }}</a>
+                        <a class="login d-inline-block align-middle" href="{{ route('customerlogin') }}"><i
+                                class="far fa-user-circle px-md-4 pe-2"></i></a>
+                    @endif
+
                 </div>
             </div>
         </nav>
@@ -119,9 +127,9 @@
                     <div class="footer-link">
                         <h5 class="text-primary">Need help?</h5>
                         <ul class="list-unstyled mb-0">
-                            <li><a href="{{route("faq")}}">FAQs</a></li>
-                            <li><a href="{{route("about")}}">About Us </a></li>
-                            <li><a href="{{route('index')}}">Contact Us</a></li>
+                            <li><a href="{{ route('faq') }}">FAQs</a></li>
+                            <li><a href="{{ route('about') }}">About Us </a></li>
+                            <li><a href="{{ route('index') }}">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -153,7 +161,8 @@
                 <div class="row align-items-center">
                     <div class="col-md-5 text-center text-md-start">
                         <a href="{{ route('index') }}"><img class="img-fluid footer-logo"
-                                src="{{ asset($company->logo) }}" style="height:50px" alt="{{$company->name}}"></a>
+                                src="{{ asset($company->logo) }}" style="height:50px"
+                                alt="{{ $company->name }}"></a>
                     </div>
                     <div class="col-md-2 text-center my-3 mt-md-0 mb-md-0">
                         <a id="back-to-top" class="back-to-top" href="#"><i class="fas fa-angle-up"></i></a>
@@ -163,7 +172,7 @@
                                 <script>
                                     document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
                                 </script>
-                            </span> <a href="{{ route('index') }}"> {{$company->name}} </a> All Rights Reserved</p>
+                            </span> <a href="{{ route('index') }}"> {{ $company->name }} </a> All Rights Reserved</p>
                     </div>
                 </div>
             </div>
@@ -195,6 +204,26 @@
 
     <!-- Template Scripts (Do not remove)-->
     <script src="{{ asset('front/js/custom.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDymzR-k83U6xBmrlrTFF2cqYNWysHK0U&libraries=places">
+    </script>
+    <script>
+        var searchInput = 'search_input';
+        var price = 15;
+        var mile_price = 1;
+        var autocomplete;
+        autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+            types: ['geocode'],
+        });
+
+        google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            var near_place = autocomplete.getPlace();
+
+            document.getElementById('latitude').value = near_place.geometry.location.lat();
+            document.getElementById('longitude').value = near_place.geometry.location.lng();
+
+
+        });
+    </script>
     @yield('js')
 
 </body>
